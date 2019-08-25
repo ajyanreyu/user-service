@@ -2,7 +2,29 @@ spring:
   application:
     name: user-service
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.intance_id:${random.value}}
+
+logging:
+  level:
+    com:
+      shiro: debug
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptior:
+            sql:
+              BasicBinder: trace
+  pattern:
+    console: "%clr(${LOG_LEVEL_PATTERN:%5p})  %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+
 
 #Defines automatic port
 server:
   port: ${PORT:0}
+

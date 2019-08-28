@@ -1,8 +1,11 @@
 package com.shiro.user.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "roles")
 public class Role {
 

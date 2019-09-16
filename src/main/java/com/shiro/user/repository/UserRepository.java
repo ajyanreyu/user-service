@@ -1,6 +1,6 @@
 package com.shiro.user.repository;
 
-import com.shiro.user.entity.User;
+import com.shiro.user.commons.entity.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -18,6 +18,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
      *
      * @param username
      * @return User
+     * @author Albano Yanes <ajyanreyu@gmail.com>
      */
     @RestResource(path = "/find-username")
     public User findByUsername(String username);

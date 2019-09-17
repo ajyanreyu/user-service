@@ -1,17 +1,17 @@
 spring:
   application:
     name: user-service
-
-  sleuth:
-    sampler:
-      probability: 1.0
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.intance_id:${random.value}}
+  profiles:
+    active: dev
+  #Configure the access point to the configuration server
+  cloud:
+    config:
+      uri: http://localhost:8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: http://*
 
 logging:
   level:
@@ -26,9 +26,3 @@ logging:
               BasicBinder: trace
   pattern:
     console: "%clr(${LOG_LEVEL_PATTERN:%5p})  %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
-
-
-#Defines automatic port
-server:
-  port: ${PORT:0}
-
